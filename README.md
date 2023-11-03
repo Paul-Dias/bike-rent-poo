@@ -1,7 +1,7 @@
 # bike-rent-poo
 
 #TECH:
-- Javascript
+- Typescript
 - jest
 - prisma
 
