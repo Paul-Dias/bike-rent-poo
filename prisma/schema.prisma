@@ -18,23 +18,23 @@ model User {
 }
 
 model Bike {
-  id          String   @id @default(uuid())
+  id          String     @id @default(uuid())
   name        String
   type        String
   bodySize    Int
   maxLoad     Int
-  rate        Int
+  rate        Float
   description String
   ratings     Int
   available   Boolean
-  location    Location @relation(fields: [locationId], references: [id])
-  imageUrls   String[]
-  locationId  String
+  latitude    Float
+  longitude   Float
+  imageUrls   ImageUrl[]
 }
 
-model Location {
-  id        String @id @default(uuid())
-  latitude  Float
-  longitude Float
-  Bike      Bike[]
+model ImageUrl {
+  id     String @id @default(uuid())
+  url    String
+  bike   Bike   @relation(fields: [bikeId], references: [id], onDelete: Cascade)
+  bikeId String
 }
